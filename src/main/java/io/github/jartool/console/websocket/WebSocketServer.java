@@ -1,9 +1,9 @@
-package com.github.jartool.console.websocket;
+package io.github.jartool.console.websocket;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.thread.ThreadUtil;
-import com.github.jartool.console.common.Constants;
-import com.github.jartool.console.queue.ConcurrentEvictingQueue;
+import io.github.jartool.console.common.Constants;
+import io.github.jartool.console.queue.ConcurrentEvictingQueue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.stereotype.Component;

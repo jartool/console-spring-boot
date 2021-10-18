@@ -1,4 +1,4 @@
-package com.github.jartool.console.filter;
+package io.github.jartool.console.filter;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.classic.spi.IThrowableProxy;
@@ -10,8 +10,8 @@ import cn.hutool.core.date.LocalDateTimeUtil;
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.ClassUtil;
-import com.github.jartool.console.common.Constants;
-import com.github.jartool.console.queue.ConcurrentEvictingQueue;
+import io.github.jartool.console.common.Constants;
+import io.github.jartool.console.queue.ConcurrentEvictingQueue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;

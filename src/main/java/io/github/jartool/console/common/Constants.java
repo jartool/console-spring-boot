@@ -1,4 +1,4 @@
-package com.github.jartool.console.common;
+package io.github.jartool.console.common;
 
 /**
  * Constants

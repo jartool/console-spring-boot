@@ -1,6 +1,6 @@
-package com.github.jartool.console.config;
+package io.github.jartool.console.config;
 
-import com.github.jartool.console.queue.ConcurrentEvictingQueue;
+import io.github.jartool.console.queue.ConcurrentEvictingQueue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

@@ -1,4 +1,4 @@
-package com.github.jartool.console.entity;
+package io.github.jartool.console.entity;
 
 /**
  * AuthEntity

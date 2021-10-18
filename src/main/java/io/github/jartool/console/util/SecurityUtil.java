@@ -1,4 +1,4 @@
-package com.github.jartool.console.util;
+package io.github.jartool.console.util;
 
 import cn.hutool.crypto.SecureUtil;
 

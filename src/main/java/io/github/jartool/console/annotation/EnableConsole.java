@@ -1,6 +1,6 @@
-package com.github.jartool.console.annotation;
+package io.github.jartool.console.annotation;
 
-import com.github.jartool.console.config.ConsoleConfig;
+import io.github.jartool.console.config.ConsoleConfig;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

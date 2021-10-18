@@ -1,10 +1,10 @@
-package com.github.jartool.console.controller;
+package io.github.jartool.console.controller;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.json.JSONObject;
-import com.github.jartool.console.common.Constants;
-import com.github.jartool.console.entity.AuthEntity;
-import com.github.jartool.console.util.SecurityUtil;
+import io.github.jartool.console.common.Constants;
+import io.github.jartool.console.entity.AuthEntity;
+import io.github.jartool.console.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

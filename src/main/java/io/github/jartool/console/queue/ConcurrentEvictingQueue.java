@@ -1,4 +1,4 @@
-package com.github.jartool.console.queue;
+package io.github.jartool.console.queue;
 
 import com.google.common.collect.EvictingQueue;
 import com.google.common.collect.Queues;
