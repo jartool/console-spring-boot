@@ -45,28 +45,25 @@ public class LogFilter extends Filter<ILoggingEvent> implements InitializingBean
 
     @Override
     public FilterReply decide(ILoggingEvent event) {
-        String message = event.getFormattedMessage();
-        if (CharSequenceUtil.isNotBlank(message) && message.indexOf(Constants.Ignore.IGNORE_MQ_OK) < 0) {
-            queue.push(CharSequenceUtil.format(Constants.Log.WS_LOG,
-                    LocalDateTimeUtil.format(LocalDateTimeUtil.of(event.getTimeStamp()),Constants.DateFormatter.DATA_YMD_HH24MS_SSS),
-                    CharSequenceUtil.format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_56952A, event.getLevel().levelStr),
-                    event.getThreadName(),
-                    CharSequenceUtil.format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_139CA2, ClassUtil.getShortClassName(event.getLoggerName())),
-                    message));
-            IThrowableProxy throwable = event.getThrowableProxy();
-            if (throwable != null) {
-                queue.push(CharSequenceUtil.format(Constants.Log.WS_LOG_THROWABLE, throwable.getClassName(), throwable.getMessage()));
-                for (StackTraceElementProxy stackTrace : throwable.getStackTraceElementProxyArray()) {
-                    String stackTraceString = stackTrace.getSTEAsString();
-                    StackTraceElement stackTraceElement = stackTrace.getStackTraceElement();
-                    String className = stackTraceElement.getClassName();
-                    if (className.indexOf(basePackageName) > -1) {
-                        String local = stackTraceElement.getFileName() + StrPool.COLON + stackTraceElement.getLineNumber();
-                        queue.push(StrPool.TAB + stackTraceString.replace(local, CharSequenceUtil
-                                .format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_287ADD, local)));
-                    } else {
-                        queue.push(StrPool.TAB + stackTraceString);
-                    }
+        queue.push(CharSequenceUtil.format(Constants.Log.WS_LOG,
+                LocalDateTimeUtil.format(LocalDateTimeUtil.of(event.getTimeStamp()),Constants.DateFormatter.DATA_YMD_HH24MS_SSS),
+                CharSequenceUtil.format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_56952A, event.getLevel().levelStr),
+                event.getThreadName(),
+                CharSequenceUtil.format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_139CA2, ClassUtil.getShortClassName(event.getLoggerName())),
+                event.getFormattedMessage()));
+        IThrowableProxy throwable = event.getThrowableProxy();
+        if (throwable != null) {
+            queue.push(CharSequenceUtil.format(Constants.Log.WS_LOG_THROWABLE, throwable.getClassName(), throwable.getMessage()));
+            for (StackTraceElementProxy stackTrace : throwable.getStackTraceElementProxyArray()) {
+                String stackTraceString = stackTrace.getSTEAsString();
+                StackTraceElement stackTraceElement = stackTrace.getStackTraceElement();
+                String className = stackTraceElement.getClassName();
+                if (className.indexOf(basePackageName) > -1) {
+                    String local = stackTraceElement.getFileName() + StrPool.COLON + stackTraceElement.getLineNumber();
+                    queue.push(StrPool.TAB + stackTraceString.replace(local, CharSequenceUtil
+                            .format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_287ADD, local)));
+                } else {
+                    queue.push(StrPool.TAB + stackTraceString);
                 }
             }
         }
