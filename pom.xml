@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.toolhub</groupId>
+    <groupId>com.github.jartool</groupId>
     <artifactId>console-spring-boot</artifactId>
     <version>1.0.0</version>
 
     <packaging>jar</packaging>
     <name>console-spring-boot</name>
-    <description>console log</description>
     <url>https://github.com/jartool/console-spring-boot</url>
+    <description>console log</description>
     <inceptionYear>2021</inceptionYear>
 
     <properties>
