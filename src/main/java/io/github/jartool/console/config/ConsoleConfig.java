@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021/10/15 16:27
  */
 @Configuration
-@ComponentScan("com.toolhub.console.**")
+@ComponentScan("io.github.jartool.console.**")
 public class ConsoleConfig {
 
     @Value("${console.queue.size:1000}")
