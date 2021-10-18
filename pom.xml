@@ -11,6 +11,7 @@
     <packaging>jar</packaging>
     <name>console-spring-boot</name>
     <description>console log</description>
+    <url>https://github.com/jartool/console-spring-boot</url>
     <inceptionYear>2021</inceptionYear>
 
     <properties>
