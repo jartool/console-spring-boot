@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/header :: common_header(~{::title},~{::link},~{})">
+    <title>Console</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/terminal/console.css}" href="../../static/css/terminal/console.css">
+</head>
+<body>
+    <div class="outer">
+        <div class="title">
+            <div class="divLeft">
+                <span class="fa fa-terminal fa-1x">
+                    &nbsp;
+                </span>
+            </div>
+            <div class="divCenter"></div>
+            <div class="divRight">
+                <button class="btn-default" id="startConsole">
+                    <span class="fa fa-play" title="open"></span>
+                </button>
+                <button class="btn-default" id="stopConsole">
+                    <span class="fa fa-stop" title="close"></span>
+                </button>
+                <button class="btn-default" id="cleanScreen">
+                    <span class="fa fa-eraser" title="clean"></span>
+                </button>
+                <button class="btn-default" id="screenScroll">
+                    <span class="fa fa-toggle-off" title="scroll"></span>
+                </button>
+            </div>
+        </div>
+        <div class="content" id="log" />
+    </div>
+    <div th:replace="../templates/common/foot :: foot"></div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+    const server = [[${server}]];
+</script>
+<script src="https://cdn.bootcdn.net/ajax/libs/reconnecting-websocket/1.0.0/reconnecting-websocket.min.js"></script>
+<script src="../../static/js/terminal/console.js" th:src="@{/js/terminal/console.js}" type="text/javascript"></script>
+</html>
