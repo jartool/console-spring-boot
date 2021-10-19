@@ -45,10 +45,6 @@ public class Constants {
         public static final String HEX_06DE08 = "#06DE08";
     }
 
-    public interface Ignore {
-        public static final String IGNORE_MQ_OK = "SEND_OK";
-    }
-
     public interface Rep {
         public static final String CODE = "code";
         public static final String SECRET = "secret";
@@ -57,5 +53,6 @@ public class Constants {
     public interface Attribute {
         public static final String AUTH_URL = "authUrl";
         public static final String AUTH_KEY = "authKey";
+        public static final String AUTH_ENABLE = "authEnable";
     }
 }

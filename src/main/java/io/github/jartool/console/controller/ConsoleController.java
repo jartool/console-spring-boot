@@ -22,24 +22,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ConsoleController {
 
-    @Value("${console.auth.key:auth}")
+    @Value("${jartool.console.auth.enable:true}")
+    private boolean authEnable;
+    @Value("${jartool.console.auth.key:auth}")
     private String authKey;
-    @Value("${console.auth.url:/auth}")
+    @Value("${jartool.console.auth.url:/consoleAuth}")
     private String authUrl;
-    @Value("${console.auth.username:admin}")
+    @Value("${jartool.console.auth.username:admin}")
     private String username;
-    @Value("${console.auth.password:admin}")
+    @Value("${jartool.console.auth.password:admin}")
     private String password;
 
-    @GetMapping("${console.view:/console}")
+    @GetMapping("${jartool.console.view:/console}")
     public String console(Model model) {
+        model.addAttribute(Constants.Attribute.AUTH_ENABLE, authEnable);
         model.addAttribute(Constants.Attribute.AUTH_KEY, authKey);
         model.addAttribute(Constants.Attribute.AUTH_URL, authUrl);
         return Constants.View.VIEW_CONSOLE;
     }
 
 
-    @PostMapping("${console.auth.url:/auth}")
+    @PostMapping("${jartool.console.auth.url:/consoleAuth}")
     @ResponseBody
     public JSONObject auth(@RequestBody AuthEntity authEntity) {
         JSONObject json = new JSONObject();

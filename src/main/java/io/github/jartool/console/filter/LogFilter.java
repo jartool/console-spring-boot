@@ -12,7 +12,6 @@ import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.ClassUtil;
 import io.github.jartool.console.common.Constants;
 import io.github.jartool.console.queue.ConcurrentEvictingQueue;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,13 +26,14 @@ import java.util.Map;
 /**
  * LogFilter
  * @author jartool
- * @version 1.0
  * @date 2021/8/3 13:22
  */
-@Slf4j
 @Component
 public class LogFilter extends Filter<ILoggingEvent> implements InitializingBean, ApplicationContextAware {
 
+    /**
+     * queue
+     */
     private static ConcurrentEvictingQueue<String> queue;
     @Resource
     public void setQueue(ConcurrentEvictingQueue<String> queue) {
@@ -45,13 +45,33 @@ public class LogFilter extends Filter<ILoggingEvent> implements InitializingBean
 
     @Override
     public FilterReply decide(ILoggingEvent event) {
+        String logText = event.getFormattedMessage();
+        pushLog(event, logText);
+        pushThrowableLog(event.getThrowableProxy());
+        return FilterReply.NEUTRAL;
+    }
+
+    /**
+     * pushLog
+     *
+     * @param event event
+     * @param logText logText
+     */
+    public void pushLog(ILoggingEvent event, String logText) {
         queue.push(CharSequenceUtil.format(Constants.Log.WS_LOG,
                 LocalDateTimeUtil.format(LocalDateTimeUtil.of(event.getTimeStamp()),Constants.DateFormatter.DATA_YMD_HH24MS_SSS),
                 CharSequenceUtil.format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_56952A, event.getLevel().levelStr),
                 event.getThreadName(),
-                CharSequenceUtil.format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_139CA2, ClassUtil.getShortClassName(event.getLoggerName())),
-                event.getFormattedMessage()));
-        IThrowableProxy throwable = event.getThrowableProxy();
+                CharSequenceUtil.format(Constants.Log.WS_LOG_FONT, Constants.Color.HEX_139CA2,
+                        ClassUtil.getShortClassName(event.getLoggerName())), logText));
+    }
+
+    /**
+     * pushThrowableLog
+     *
+     * @param throwable throwable
+     */
+    public void pushThrowableLog(IThrowableProxy throwable) {
         if (throwable != null) {
             queue.push(CharSequenceUtil.format(Constants.Log.WS_LOG_THROWABLE, throwable.getClassName(), throwable.getMessage()));
             for (StackTraceElementProxy stackTrace : throwable.getStackTraceElementProxyArray()) {
@@ -67,7 +87,6 @@ public class LogFilter extends Filter<ILoggingEvent> implements InitializingBean
                 }
             }
         }
-        return FilterReply.NEUTRAL;
     }
 
     @Override

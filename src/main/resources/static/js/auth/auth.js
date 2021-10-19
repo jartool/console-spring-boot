@@ -1,9 +1,32 @@
-const key = sessionStorage.getItem(authKey)
+if (authEnable) {
+    const key = sessionStorage.getItem(authKey)
 
-if (key == null) {
-    auth()
-} else {
-    check(null, {key: key})
+    if (key == null) {
+        auth()
+    } else {
+        check(null, {key: key})
+    }
+}
+
+const _ = {
+    alert: function (text) {
+        $.alert({
+            title: 'Tips',
+            useBootstrap: false,
+            boxWidth: '20%',
+            content: text
+        });
+    },
+    close: function (jConfirm) {
+        if (jConfirm !== undefined && jConfirm !== null) {
+            jConfirm.close()
+        }
+    },
+    setItem: function (storage, key, value) {
+        if (value !== undefined && value !== null) {
+            storage.setItem(key, value)
+        }
+    }
 }
 
 function auth() {
@@ -78,23 +101,3 @@ function check(jConfirm, data) {
     })
 }
 
-const _ = {
-    alert: function (text) {
-        $.alert({
-            title: 'Tips',
-            useBootstrap: false,
-            boxWidth: '20%',
-            content: text
-        });
-    },
-    close: function (jConfirm) {
-        if (jConfirm !== undefined && jConfirm !== null) {
-            jConfirm.close()
-        }
-    },
-    setItem: function (storage, key, value) {
-        if (value !== undefined && value !== null) {
-            storage.setItem(key, value)
-        }
-    }
-}

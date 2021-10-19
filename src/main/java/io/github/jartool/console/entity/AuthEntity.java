@@ -8,8 +8,17 @@ package io.github.jartool.console.entity;
  */
 public class AuthEntity {
 
+    /**
+     * key
+     */
     private String key;
+    /**
+     * username
+     */
     private String username;
+    /**
+     * password
+     */
     private String password;
 
     public String getKey() {

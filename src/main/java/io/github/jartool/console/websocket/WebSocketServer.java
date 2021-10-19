@@ -2,9 +2,10 @@ package io.github.jartool.console.websocket;
 
 import cn.hutool.core.text.CharSequenceUtil;
 import cn.hutool.core.thread.ThreadUtil;
+import cn.hutool.log.Log;
+import cn.hutool.log.LogFactory;
 import io.github.jartool.console.common.Constants;
 import io.github.jartool.console.queue.ConcurrentEvictingQueue;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.stereotype.Component;
 
@@ -21,10 +22,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author jartool
  * @date 2021/10/15 16:16:58
  */
-@Slf4j
 @Component
 @ServerEndpoint("/console")
 public class WebSocketServer implements DisposableBean {
+
+    private static final Log log = LogFactory.get();
 
     private static ConcurrentEvictingQueue<String> queue;
     @Resource

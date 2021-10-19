@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan("io.github.jartool.console.**")
 public class ConsoleConfig {
 
-    @Value("${console.queue.size:1000}")
+    @Value("${jartool.console.queue.size:1000}")
     private int maxSize;
 
     @Bean

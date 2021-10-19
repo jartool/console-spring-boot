@@ -13,6 +13,9 @@ import java.util.Queue;
  */
 public class ConcurrentEvictingQueue<T> {
 
+    /**
+     * queue
+     */
     private Queue<T> queue;
 
     public ConcurrentEvictingQueue(int maxSize) {
