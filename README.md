@@ -1,24 +1,35 @@
 # console-spring-boot
-### 简介
+
+### 一、简介
 
 ------------
 
 	基于websocket和驱逐队列写的一个小工具,可以浏览器实时查看控制台日志。
-### maven依赖
+![](https://s3.bmp.ovh/imgs/2021/10/a1513e32a6467d22.png)
+### 二、食用方式
+- #### maven
 
 ------------
 
 ```xml
+<!-- console-spring-boot -->
+<dependency>
+    <groupId>io.github.jartool</groupId>
+    <artifactId>console-spring-boot</artifactId>
+    <version>1.0.1</version>
+</dependency>
+<!-- thymeleaf -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-thymeleaf</artifactId>
 </dependency>
+<!-- websocket -->
 <dependency>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-websocket</artifactId>
 </dependency>
 ```
-### logback-spring.xml配置
+- #### logback-spring.xml
 
 ------------
 	ConsoleAppender Add: <filter class="io.github.jartool.console.filter.LogFilter"></filter>
@@ -34,12 +45,11 @@
     </encoder>
 </appender>
 ```
-### Springboot配置
+- #### configuration
 
 ------------
-##### 启动类
-	启动类Add: @EnableConsole注解即可
 ```java
+//启动类Add: @EnableConsole注解即可
 @EnableConsole
 @SpringBootApplication
 public class DemoApplication {
@@ -49,8 +59,8 @@ public class DemoApplication {
     }
 }
 ```
-##### yml
 ```yaml
+#yml配置
 jartool:
   console:
     view: /console  #控制台日志访问地址,默认: /console
