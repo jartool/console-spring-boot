@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * ConsoleController
  *
  * @author jartool
- * @date 2021/10/15 16:18:51
  */
 @Controller
 public class ConsoleController {

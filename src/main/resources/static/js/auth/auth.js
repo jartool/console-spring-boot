@@ -1,13 +1,3 @@
-if (authEnable) {
-    const key = sessionStorage.getItem(authKey)
-
-    if (key == null) {
-        auth()
-    } else {
-        check(null, {key: key})
-    }
-}
-
 const _ = {
     alert: function (text) {
         $.alert({
@@ -26,6 +16,16 @@ const _ = {
         if (value !== undefined && value !== null) {
             storage.setItem(key, value)
         }
+    }
+}
+
+if (authEnable) {
+    const key = sessionStorage.getItem(authKey)
+
+    if (key == null) {
+        auth()
+    } else {
+        check(null, {key: key})
     }
 }
 
@@ -89,7 +89,7 @@ function check(jConfirm, data) {
                 _.close(jConfirm)
             } else {
                 if (jConfirm != null) {
-                    _.alert('passwrod error')
+                    _.alert('username or password error')
                 } else {
                     auth()
                 }

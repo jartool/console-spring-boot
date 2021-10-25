@@ -9,7 +9,6 @@ import java.util.Queue;
  * 并发驱逐队列
  *
  * @author jartool
- * @date 2021/10/15 16:11:13
  */
 public class ConcurrentEvictingQueue<T> {
 

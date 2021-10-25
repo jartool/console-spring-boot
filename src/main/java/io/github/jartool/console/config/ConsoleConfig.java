@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * ConsoleConfig
+ *
  * @author jartool
- * @version 1.0
- * @date 2021/10/15 16:27
  */
 @Configuration
 @ComponentScan("io.github.jartool.console.**")

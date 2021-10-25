@@ -25,8 +25,8 @@ import java.util.Map;
 
 /**
  * LogFilter
+ *
  * @author jartool
- * @date 2021/8/3 13:22
  */
 @Component
 public class LogFilter extends Filter<ILoggingEvent> implements InitializingBean, ApplicationContextAware {

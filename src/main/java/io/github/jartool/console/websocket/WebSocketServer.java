@@ -20,7 +20,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * WebSocketServer
  *
  * @author jartool
- * @date 2021/10/15 16:16:58
  */
 @Component
 @ServerEndpoint("/console")

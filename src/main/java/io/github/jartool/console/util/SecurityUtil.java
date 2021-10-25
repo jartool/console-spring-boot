@@ -6,7 +6,6 @@ import cn.hutool.crypto.SecureUtil;
  * SecurityUtil
  *
  * @author jartool
- * @date 2021/10/18 17:07:03
  */
 public class SecurityUtil {
 

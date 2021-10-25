@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.jartool</groupId>
     <artifactId>console-spring-boot</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <packaging>jar</packaging>
     <name>console-spring-boot</name>
@@ -17,7 +17,7 @@
     <licenses>
         <license>
             <name>Mulan Permissive Software License，Version 2</name>
-            <url>https://license.coscl.org.cn/MulanPSL2</url>
+            <url>http://license.coscl.org.cn/MulanPSL2</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -37,7 +37,7 @@
         <developer>
             <name>jartool</name>
             <email>lidevboy@hotmail.com</email>
-            <url>https://github.com/jartool</url>
+            <url>https://jartool.github.io</url>
         </developer>
     </developers>
 
@@ -98,6 +98,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.1.1</version>
+                <configuration>
+                    <additionalJOptions>
+                        <additionalJOption>-Xdoclint:none</additionalJOption>
+                    </additionalJOptions>
+                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>

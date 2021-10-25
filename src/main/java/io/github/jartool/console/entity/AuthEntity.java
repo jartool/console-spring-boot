@@ -4,7 +4,6 @@ package io.github.jartool.console.entity;
  * AuthEntity
  *
  * @author jartool
- * @date 2021/10/18 17:00:26
  */
 public class AuthEntity {
 

@@ -4,7 +4,6 @@ package io.github.jartool.console.common;
  * Constants
  *
  * @author jartool
- * @date 2021/10/15 16:09:58
  */
 public class Constants {
 
